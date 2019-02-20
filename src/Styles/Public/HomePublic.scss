@@ -1,0 +1,98 @@
+@import '../Variable.scss';
+.homePublic {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url('../../../public/images/background/back-ground.png');
+    background-size: 100%;
+    background-repeat: round;
+    background-attachment: fixed;
+    div.container {
+        margin: 0 auto;
+        flex-grow: 1;
+        div.content {
+            margin: 5px;
+            max-width: 49.1%;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            label.signTitle{
+                font-size: 1.5em;
+            }
+            div:first-child{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                label.contentBigTitle{
+                    display: block;
+                    font-size: 3em;
+                }
+                label.contentNomTitle{
+                    font-size: .9em;
+                    text-align: center;
+                    margin: 15px 0px;
+                }
+            }
+            div:last-child{
+                button{
+                    margin: 0px 5px;
+                }
+            }
+        }
+        div.signIn{
+            justify-content: unset;
+            padding: unset;
+            align-items: unset;
+            padding: 20px 20px 50px 20px;
+            box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3), 0px 2px 2px 0px rgba(0, 0, 0, 0.24), 0px 3px 1px -2px rgba(0, 0, 0, 0.22);
+            background-color: rgba(25, 25, 25, .8);
+            margin: 30px 0px;
+            border-radius: 3px;
+            position: relative;
+            div.signHeader{
+                svg{
+                    width: 15%;
+                }
+            }
+        }
+        div.rightDiv{
+            margin: 30px 0px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-left: 10%;
+            div.signDivContent{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                margin-top: 80px;
+                label.bigTitle{
+                    font-size: 1.5em;
+                    font-weight: bold;
+                    margin: 20px 0px;
+                }
+                img{
+                    width: 70%;
+                }
+                div.contentInfo{
+                    display: flex;
+                    align-items: center;
+                    margin: 15px 0px;
+                    svg{
+                        width: 24px;
+                        height: 100%;
+                        margin-right: 5px;
+                    }
+                }
+            }
+            span.content{
+                label{
+                    color: $hight-light_color;
+                    margin: 0px 5px;
+                }
+            }
+        }
+    }
+}

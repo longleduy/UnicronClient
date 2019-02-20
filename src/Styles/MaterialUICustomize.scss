@@ -1,0 +1,36 @@
+
+div.mySnackBar{
+    z-index: 99999999999;
+}
+div.mySnackBar>div{
+    background-color: #d32f2f;
+    min-width: 200px;
+    [class*="MuiSnackbarContent-message"]{
+        width: 100%;
+    }
+    span.messageBox{
+        display: flex;
+        flex-direction: column;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        svg{
+            width: 20px;
+            height: 100%;
+            margin-right: 5px;
+        }
+        label{
+            color: white;
+        }
+    }
+}
+div.topSnackBar{
+    top: 10px !important;
+}
+div.mySnackBarSucess>div{
+    background-color: #43a047 !important;
+}
+.myCircularProgress{
+    color: white !important;
+}
