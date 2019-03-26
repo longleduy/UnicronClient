@@ -1,8 +1,8 @@
 import {SIGN_OUT_MUTATION} from './contant/graphql_contants'
-export const signOut =  async (client,history) => {
-    client.resetStore();
-    localStorage.removeItem('userInfo');
+    const signOut =  async (client,history) => {
+    localStorage.removeItem('token');
     history.push('/');
+    client.resetStore();
     await client.mutate({
         mutation: SIGN_OUT_MUTATION
     })

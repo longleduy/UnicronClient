@@ -1,7 +1,8 @@
 import {SIGN_OUT_MUTATION} from '../../graphql/mutations/user_mutation'
 export const errorHandler = (history, error) => {
     console.error(error);
-    const errorMessage = error.message.split(':')[0]
+    //const errorMessage = error.message.split(':')[0]
+    const errorMessage = 'Something went wrong'
     history.push({
         pathname: '/error',
         state: { error: errorMessage, log: error.stack }
@@ -10,7 +11,8 @@ export const errorHandler = (history, error) => {
 export const errorHandlerAuthen =(error, client, history) => {
     console.error("Server error__________"+error);
     let code;
-    let errorMessage = error.message.split(':')[0];
+    let errorMessage = 'Something went wrong'
+    //let errorMessage = error.message.split(':')[0];
     if(error.message.split(':')[1] == ' Empty list'){
         return true;
     }

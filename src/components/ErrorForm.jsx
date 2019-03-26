@@ -5,11 +5,10 @@ import otherStyles from '../Styles/Other.scss'
 
 class ErrorForm extends PureComponent {
     render() {
-        const { error } = this.props.location.state
         return <Fragment>
             <div className={`${appStyles.mainContent}`}>
                 <div className={`${otherStyles.errorForm}`}>
-                    <label>{error}</label>
+                    <label>Something went wrong</label>
                 </div>
             </div>
         </Fragment>

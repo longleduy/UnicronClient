@@ -33,3 +33,22 @@ query GetNotificationInfo{
         }
 	}
 `;
+export const GET_SIGNIN_BLOCK_TIME = gql`
+    query GetSignInBlockTime{
+        getSignInBlockTime{
+            count,
+            status
+              }
+            }
+        `;
+export const GET_LIST_USER = gql`
+query GetListUser($limitNumber:Int!,$skipNumber:Int!){
+    getListUser(limitNumber:$limitNumber,skipNumber:$skipNumber){
+      userID
+      profileName
+      avatar
+      status
+      point
+    }
+        }
+    `;

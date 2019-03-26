@@ -2,6 +2,12 @@
 div.mySnackBar{
     z-index: 99999999999;
 }
+svg.svgLoadingBlockTime{
+    width: 24px;
+    path{
+        fill: white;
+    }
+}
 div.mySnackBar>div{
     background-color: #d32f2f;
     min-width: 200px;

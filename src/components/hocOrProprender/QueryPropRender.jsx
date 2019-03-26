@@ -7,10 +7,10 @@ class QueryPropRender extends Component {
         super(props);
     }
     render() {
-        const { query,client,history,variables,pollInterval,fetchPolicy} = this.props;
+        const { query,client,history,variables,pollInterval,fetchPolicy } = this.props;
         return <Query query={query} variables={variables} fetchPolicy={fetchPolicy?fetchPolicy:"network-only"} onError={(error) => {errorHandlerAuthen(error, client, history)}}>
-            {({ loading, error, data,fetchMore, subscribeToMore}) => {
-                return (<Fragment>{this.props.queryPropRender({ loading, error, data,fetchMore,subscribeToMore })}</Fragment>)
+            {({ loading, error, data,fetchMore, subscribeToMore,refetch}) => {
+                return (<Fragment>{this.props.queryPropRender({ loading, error, data,fetchMore,subscribeToMore,refetch  })}</Fragment>)
             }}
         </Query>
     }

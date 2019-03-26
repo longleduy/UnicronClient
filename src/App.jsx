@@ -11,18 +11,18 @@ class App extends PureComponent {
     componentDidCatch(error, info){
         this.props.history.push({
             pathname: '/error',
-            state: { error:error.message, log: "2" }
+            state: { error:'Something went wrong', log: "2" }
         });
     }
     render() {
-        const isShowHeader = location.pathname != '/sign/sign-up' && location.pathname != '/sign/sign-in' && location.pathname != '/';
+        const isShowHeader = (location.hash).indexOf('/sign/sign-up') == -1  && (location.hash).indexOf('/sign/sign-in') == -1 && location.hash != '#/';
         return <Query query={QUERY_USER_INFO}>
             {({ loading, error, data }) => {
                 const { isAuthen } = data.queryUserInfo;
                 return <Fragment>
                     <div className={styles.app}>
                       {isShowHeader && <Header data={data}/>}  
-                        <Container />
+                        <Container isShowHeader={isShowHeader}/>
                         {isAuthen && <Footer/>}
                     </div>
                 </Fragment>

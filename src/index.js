@@ -1,7 +1,7 @@
 import "regenerator-runtime/runtime";
 import ReactDOM from 'react-dom'
 import React, { Fragment } from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter,HashRouter } from 'react-router-dom'
 import createBrowserHistory from 'history/createBrowserHistory'
 import { ApolloProvider } from "react-apollo"
 import { ApolloLink,split } from 'apollo-link'
@@ -12,13 +12,11 @@ import { createHttpLink } from "apollo-link-http"
 import { setContext } from 'apollo-link-context'
 import { withClientState } from 'apollo-link-state'
 import { WebSocketLink } from 'apollo-link-ws'
-
 import $ from 'jquery'
 import 'typeface-roboto'
 import Favicon from 'react-favicon'
 import App from './App.jsx'
 import Logo from "../public/images/logo/favicon.png"
-import { HOST,WSS, SERVER_PORT, GRAPHQL_ENDPOINT } from './utils/contants/host_contants'
 //Todo: Utils
 import {mutationUserInfo,mutationChatChanel} from './graphql/local/mutation'
 import { getCacheLocalStorage } from './graphql/local/defaults'
@@ -27,7 +25,7 @@ const cache = new InMemoryCache({
     dataIdFromObject: object => object.id
 });
 const wsLink = new WebSocketLink({
-    uri: `${WSS}:${SERVER_PORT}/${GRAPHQL_ENDPOINT}`,
+    uri: `${process.env.WSS}:${process.env.SERVER_PORT}/${process.env.GRAPHQL_ENDPOINT}`,
     options: {
       reconnect: true,
     },
@@ -72,9 +70,10 @@ const afterWareLink = new ApolloLink((operation, forward) => {
 });
 //Todo: Http link
 const httpLink = createHttpLink({
-    uri: `${HOST}:${SERVER_PORT}/${GRAPHQL_ENDPOINT}`,
+    uri: `${process.env.HOST}:${process.env.SERVER_PORT}/${process.env.GRAPHQL_ENDPOINT}`,
     credentials: 'include'
 });
+const link0 = ApolloLink.from([afterWareLink, httpLink]);
 const link = ApolloLink.from([stateLink, contextLink, split(
     ({ query }) => {
       const { kind, operation } = getMainDefinition(query);
@@ -83,7 +82,7 @@ const link = ApolloLink.from([stateLink, contextLink, split(
       );
     },
     wsLink,
-    httpLink,
+    link0,
 )]);
 const client = new ApolloClient({
     cache,
@@ -93,9 +92,9 @@ ReactDOM.render(<Fragment>
     <Favicon url={Logo} />
         <ApolloProviderPropsRender client={client} provider={() => {
             return <ApolloProvider client={client}>
-                <BrowserRouter>
+                <HashRouter>
                     <App />
-                </BrowserRouter>
+                </HashRouter>
             </ApolloProvider>
         }} />
 </Fragment>, document.querySelector('#root'));

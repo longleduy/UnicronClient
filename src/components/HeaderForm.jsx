@@ -5,24 +5,20 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
-import SearchIcon from '@material-ui/icons/Search'
-import Badge from '@material-ui/core/Badge';
-import MailIcon from '@material-ui/icons/Mail';
 //Todo: Componeent
 import { HeaderRight } from '../contaniners/header/HeaderRight.jsx'
 import ChatBox from '../contaniners/header/ChatBox.jsx'
-import {SearchFrom} from '../components/header/SearchForm.jsx'
+import { SearchFrom } from '../components/header/SearchForm.jsx'
 //Todo: Style
 import styles from '../Styles/Header.scss'
 import appStyles from '../Styles/App.scss'
 //Todo: GraphQl
 import { signOut } from '../graphql/actions/graphql_action'
 //Todo: Utils
-import { showMenu } from '../utils/routes/routes_utils'
 class HeaderForm extends PureComponent {
     showButtonSign = (isAuthen, userID, avatar) => {
         if (!isAuthen) {
-            if (location.pathname != '/sign/sign-up' && location.pathname != '/sign/sign-in' && location.pathname != '/') {
+            if (location.hash != '#/sign/sign-up' && location.hash != '#/sign/sign-in' && location.hash != '#/') {
                 return (<Fragment>
                     <Link to='/sign/sign-in' className={`${styles.signButton} ${styles.signInButton}`}>
                         <Button color="inherit">Sign In</Button>
@@ -39,8 +35,8 @@ class HeaderForm extends PureComponent {
                     {/* {showMenu()} */}
                     <div className={styles.divMenu}>
                         <HeaderRight userID={userID} />
-                        <ChatBox avatar={avatar} userID={userID} />
-                        <SearchFrom/>
+                        {location.hash != '#/error' && <ChatBox avatar={avatar} userID={userID} />}
+                        <SearchFrom />
                         <Button className={`${appStyles.buttonSvg}  ${styles.menuButton}`} onClick={this.signOut}>
                             <svg viewBox="0 0 24 24">
                                 <path fill="#ccc" d="M16,17V14H9V10H16V7L21,12L16,17M14,2A2,2 0 0,1 16,4V6H14V4H5V20H14V18H16V20A2,2 0 0,1 14,22H5A2,2 0 0,1 3,20V4A2,2 0 0,1 5,2H14Z" />

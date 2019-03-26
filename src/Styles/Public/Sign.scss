@@ -4,11 +4,32 @@
         width: 100%;
     }
 }
-
+div.signBlockDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin-bottom: 70px;
+    label.blockBigTitle{
+        font-size: 1.4em;
+    margin-bottom: 30px;
+    font-weight: bold;
+    }
+    label.blockContent{
+        font-size: 1.2em;
+    }
+    label.timeLeft{
+        margin-top: 15px;
+    }
+}
 div.signForm {
     width: 90%;
     div.email {
         width: 100%;
+    }
+    button.signInButton{
+        min-height: 36px;
     }
     span.noteSign {
         display: flex;

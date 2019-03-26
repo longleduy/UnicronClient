@@ -10,7 +10,7 @@ import {showPrivateRoutes, showPublicRoutes} from '../utils/routes/routes_utils'
 
 class ContainerForm extends Component {
     render() {
-        const isShowHeader = location.pathname != '/sign/sign-up' && location.pathname != '/sign/sign-in' && location.pathname != '/';
+        const {isShowHeader} = this.props;
         return <Fragment>
             <div className={`${styles.container} ${isShowHeader?'':styles.fullContainer}`}>
                 <Switch>

@@ -30,6 +30,12 @@ div.indexContent {
             svg{
                 color: white;
             }
+            svg.svgLoadingBlockTime{
+                width: 40px;
+                path{
+                    fill:white;
+                }
+            }
         }
         div.divBanner {
             max-height: 60px;

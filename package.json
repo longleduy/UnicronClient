@@ -4,9 +4,9 @@
   "description": "UnicronClient",
   "main": "server.js",
   "scripts": {
-    "clean": "rimraf dist",
-    "webpack": "npm run clean && webpack",
-    "start": "webpack-dev-server --https --host 192.168.10.53 --key  ./ssl/server.key --cert ./ssl/server.crt"
+    "clean": "rimraf build",
+    "webpack": "npm run clean && webpack --env.ENVIRONMENT=production --config webpack.config.prod.js",
+    "start": "webpack-dev-server --https --host 192.168.10.125 --key  ./ssl/server.key --cert ./ssl/server.crt --env.ENVIRONMENT=development --config webpack.config.dev.js"
   },
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "bluebird": "^3.5.3",
     "css-loader": "^1.0.1",
-    "dotenv": "^6.1.0",
+    "dotenv": "^6.2.0",
     "file-loader": "^2.0.0",
     "graphql": "^14.0.2",
     "graphql-subscriptions": "^1.0.0",
@@ -66,6 +66,7 @@
     "react-router-dom": "^4.3.1",
     "react-textarea-autosize": "^7.1.0-1",
     "sass-loader": "^7.1.0",
+    "scheduler": "^0.13.4",
     "style-loader": "^0.23.1",
     "subscriptions-transport-ws": "^0.9.15",
     "typeface-roboto": "0.0.54",

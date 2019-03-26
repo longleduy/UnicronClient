@@ -3,6 +3,7 @@ const path = require('path')
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {HOST,CLIENT_PORT} = require('./src/utils/contants/host_contants')
+const dotenv = require('dotenv'); 
 const VENDOR_LIBS = [
     "jquery",
     "react",
@@ -18,11 +19,25 @@ const devServer = {
     compress: true,
     contentBase: path.resolve(__dirname, 'dist')
 };
+module.exports = () => {
+    // call dotenv and it will return an Object with a parsed key 
+    const env = dotenv.config().parsed;
+    // reduce it to a nice object, the same as before
+    const envKeys = Object.keys(env).reduce((prev, next) => {
+      prev[`process.env.${next}`] = JSON.stringify(env[next]);
+      return prev;
+    }, {});
+    return {
+      plugins: [
+        new webpack.DefinePlugin(envKeys)
+      ]
+    };
+}
 module.exports = {
     resolve: {
         alias: {
-          'react-dom': 'react-dom/profiling',
-          'schedule/tracing': 'schedule/tracing-profiling',
+          'react-dom$': 'react-dom/profiling',
+          'scheduler/tracing': 'scheduler/tracing-profiling',
         }
     },
     entry: {
@@ -31,9 +46,10 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[chunkhash].js',
-        //Todo: Sử dụng cho nested route (môi trường dev), mất cả buổi sáng vọc, khổ vlin
-        publicPath: `${HOST}:${CLIENT_PORT}/`
+        filename: '[name].[chunkhash].js'
+        //publicPath: 'D:/jsDev/UnicronApp/UnicronClient/dist/'
+        //Todo: Sử dụng cho nested route (môi trường dev)
+        //publicPath: `${HOST}:${CLIENT_PORT}/`
     },
     module: {
         rules: [
@@ -80,7 +96,7 @@ module.exports = {
             'windown.jQuery': 'jquery'
         }),
         /* Todo: Optimize bundle.js và vendor.js => giảm kích thước file
-               Thêm manifest: khi build lại project sẽ chỉ load lại những gói file có sự thay đổi ( thường là bundle.js) */
+               Thêm manifest: khi dist lại project sẽ chỉ load lại những gói file có sự thay đổi ( thường là bundle.js) */
         // Todo: Sinh ra file index.html trong gói bundle
         new HtmlWebpackPlugin({
             template: 'src/index.html'
@@ -98,9 +114,9 @@ module.exports = {
             name: "manifest",
           },
     },
-    mode: 'development',
+    mode: 'production',
     //Todo: Trace log
-    devtool: '#source-map',
-    devServer,
+    //devtool: '#source-map',
+    //devServer,
 
 }

@@ -41,6 +41,10 @@
                 }
             }
         }
+        div.signInLoading{
+            justify-content: center !important;
+            align-items: center !important;
+        }
         div.signIn{
             justify-content: unset;
             padding: unset;
@@ -51,11 +55,21 @@
             margin: 30px 0px;
             border-radius: 3px;
             position: relative;
+            svg.svgLoadingBlockTime{
+                width: 40px;
+                path{
+                    fill:$main_button_color
+                }
+            }
             div.signHeader{
+                text-align: center;
                 svg{
                     width: 15%;
                 }
             }
+        }
+        div.blockSignDiv{
+            background-color: rgba(255, 0, 0, 0.48);
         }
         div.rightDiv{
             margin: 30px 0px;
