@@ -2,8 +2,8 @@ const path = require('path')
 // TODO: Export file css ra file riêng
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const {HOST,CLIENT_PORT} = require('./src/utils/contants/host_contants')
-const dotenv = require('dotenv'); 
+const dotenv = require('dotenv');
+const fs = require('fs')
 const VENDOR_LIBS = [
     "jquery",
     "react",
@@ -19,21 +19,17 @@ const devServer = {
     compress: true,
     contentBase: path.resolve(__dirname, 'dist')
 };
-module.exports = () => {
-    // call dotenv and it will return an Object with a parsed key 
-    const env = dotenv.config().parsed;
-    // reduce it to a nice object, the same as before
-    const envKeys = Object.keys(env).reduce((prev, next) => {
-      prev[`process.env.${next}`] = JSON.stringify(env[next]);
+module.exports = env => {
+    const currentPath = path.join(__dirname);
+    const basePath = currentPath + '/.env';
+    const envPath = basePath + '.' + env.ENVIRONMENT;
+    const finalPath = fs.existsSync(envPath) ? envPath : basePath;
+    const fileEnv = dotenv.config({ path: finalPath }).parsed;
+    const envKeys = Object.keys(fileEnv).reduce((prev, next) => {
+      prev[`process.env.${next}`] = JSON.stringify(fileEnv[next]);
       return prev;
     }, {});
-    return {
-      plugins: [
-        new webpack.DefinePlugin(envKeys)
-      ]
-    };
-}
-module.exports = {
+      return {
     resolve: {
         alias: {
           'react-dom$': 'react-dom/profiling',
@@ -100,7 +96,8 @@ module.exports = {
         // Todo: Sinh ra file index.html trong gói bundle
         new HtmlWebpackPlugin({
             template: 'src/index.html'
-        })
+        }),
+        new webpack.DefinePlugin(envKeys)
     ],
     optimization: {
         splitChunks: {
@@ -119,4 +116,5 @@ module.exports = {
     //devtool: '#source-map',
     //devServer,
 
+}
 }
