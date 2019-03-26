@@ -4,7 +4,7 @@ import { Query } from "react-apollo"
 import { QUERY_USER_INFO } from './graphql/local/state_mutation'
 import { Header } from './contaniners/Header.jsx'
 import { Container } from './contaniners/Container.jsx'
-import {Footer} from './contaniners/Footer.jsx'
+import Footer from './contaniners/Footer.jsx'
 import styles from './Styles/App.scss'
 
 class App extends PureComponent {

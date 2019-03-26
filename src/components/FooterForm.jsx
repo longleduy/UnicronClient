@@ -4,7 +4,7 @@ import footerStyles from '../Styles/Footer.scss'
 class FooterForm extends PureComponent {
     render() {
         return <Fragment>
-            <div className={footerStyles.footer}>
+            <div className={footerStyles.footer} id="footer-test">
                 <div className={footerStyles.footerContent}>
                     <div  className={footerStyles.footerLogo}>
                         <label>TripleD Application</label>

@@ -56,3 +56,13 @@ mutation mutationChatChanel($isOpen: isOpen,$to: to){
 	}
 }
 `;
+export const SET_USER_STATUS_MUTATION = gql`        
+mutation SetUserStatus($status:String!){
+	setUserStatus(status:$status){
+		userID
+            profileName
+            avatar
+            status
+            point
+	}
+}`;

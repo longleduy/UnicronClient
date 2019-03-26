@@ -11,3 +11,14 @@ export const NOTIFICATION_SUBSCRIPTION = gql`
     }
 }
 `;
+export const SET_USER_STATUS_SUB = gql`
+	subscription SetUserStatusSub{
+		setUserStatusSub{
+            userID
+            profileName
+            avatar
+            status
+            point
+    }
+}
+`;
