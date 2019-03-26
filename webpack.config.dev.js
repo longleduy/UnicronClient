@@ -47,7 +47,7 @@ module.exports = env => {
             path: path.resolve(__dirname, 'dist'),
             filename: '[name].[chunkhash].js',
             //Todo: Sử dụng cho nested route (môi trường dev), mất cả buổi sáng vọc, khổ vlin
-            publicPath: `${process.env.HOST}:${process.env.CLIENT_PORT}/`
+            publicPath: `${process.env.PUBLIC_PATH}/`
         },
         module: {
             rules: [

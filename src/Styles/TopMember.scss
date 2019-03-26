@@ -3,6 +3,7 @@
 div.mainDiv {
     position: fixed;
     width: 265px;
+
     div.divLoading {
         width: 265px;
         height: 100%;
@@ -24,9 +25,15 @@ div.mainDiv {
             }
         }
     }
-    div.userInfoDiv:hover{
+
+    div.userInfoDiv:hover {
         background-color: rgb(50, 50, 50);
     }
+
+    div.userOnline {
+        background-color: #00800021 !important;
+    }
+
     div.userInfoDiv {
         box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
         padding: 10px 5px;
@@ -37,12 +44,40 @@ div.mainDiv {
         background-color: rgba(41, 41, 41, 0.5);
         border-radius: 4px;
         position: relative;
+
+        div.divStatus {
+            span.statusSpan {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-top: 3px;
+                margin-left: -2px;
+
+                svg {
+                    width: 12px;
+                    height: 12px;
+                    margin-right: 1px;
+                    padding-top: 2px;
+
+                    path {
+                        fill: green;
+                    }
+                }
+
+                label.statusLabel {
+                    font-size: .6em;
+                }
+            }
+        }
+
         div.btnOption {
             flex-grow: 1;
             text-align: right;
             padding-right: 15px;
+
             button {
                 width: 32px;
+
                 svg {
                     path {
                         fill: #ccc;
@@ -52,6 +87,7 @@ div.mainDiv {
 
             svg.postSvg {
                 width: 20px;
+
                 path {
                     fill: #ccc;
                 }

@@ -35,11 +35,11 @@ const subscribeLiked = (subscribeToMore) => {
     }
   });
 }
-  // useEffect(() => {
-  //   return () => {
-  //     window.removeEventListener("scroll", loadMore, false);
-  //   }
-  // })
+  useEffect(() => {
+    return () => {
+      window.removeEventListener("scroll", loadMore, false);
+    }
+  })
   return <QueryPropRender
     query={GET_LIMITED_POSTS} variables={{ limitNumber: 5,skipNumber:0 }}
     queryPropRender={({ loading, data,fetchMore,subscribeToMore }) => {
@@ -48,7 +48,7 @@ const subscribeLiked = (subscribeToMore) => {
         return null;
       }
       const listPost = [...data.getLimitedPost];
-      //addEventLoadMore(fetchMore,listPost.length);
+      addEventLoadMore(fetchMore,listPost.length);
       return <PrivateIndexListPostForm loading={loading} listPost={listPost} subscribeToMore ={subscribeToMore} />
     }} />
   //return <PrivateIndexListPostForm  listPost={listPost} />

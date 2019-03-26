@@ -25,7 +25,7 @@ const cache = new InMemoryCache({
     dataIdFromObject: object => object.id
 });
 const wsLink = new WebSocketLink({
-    uri: `${process.env.WSS}:${process.env.SERVER_PORT}/${process.env.GRAPHQL_ENDPOINT}`,
+    uri: `${process.env.WSS}`,
     options: {
       reconnect: true,
     },
@@ -70,7 +70,7 @@ const afterWareLink = new ApolloLink((operation, forward) => {
 });
 //Todo: Http link
 const httpLink = createHttpLink({
-    uri: `${process.env.HOST}:${process.env.SERVER_PORT}/${process.env.GRAPHQL_ENDPOINT}`,
+    uri: `${process.env.HOST}`,
     credentials: 'include'
 });
 const link0 = ApolloLink.from([afterWareLink, httpLink]);
