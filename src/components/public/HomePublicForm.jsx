@@ -3,6 +3,7 @@ import {Route, Link, withRouter} from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import PublicUserSignInForm from './user/PublicUserSignInForm.jsx'
 import PublicUserSignUpForm from './user/PublicUserSignUpForm.jsx'
+import PublicFacebookTest from './user/PublicFacebookTest.jsx'
 import appStyles from '../../Styles/App.scss'
 import styles from '../../Styles/Public/HomePublic.scss'
 class HomePublicForm extends Component {
@@ -15,6 +16,7 @@ class HomePublicForm extends Component {
                     <Route path="/" exact render={() => <PublicUserSignInForm/>}/>
                     <Route path="/sign/sign-in" exact render={() => <PublicUserSignInForm/>}/>
                     <Route path="/sign/sign-up" exact render={() => <PublicUserSignUpForm/>}/> 
+                    <Route path="/sign/auth/facebook/callback" render={() => <PublicFacebookTest/>}/>          
                     <Grid item xs={6} className={styles.rightDiv}>
                         <div className={styles.signDivContent}>
                             <label className={styles.bigTitle}>

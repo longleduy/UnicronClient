@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf build",
     "webpack": "npm run clean && webpack --env.ENVIRONMENT=production --config webpack.config.prod.js",
-    "start": "webpack-dev-server --https --host 192.168.10.125 --key  ./ssl/server.key --cert ./ssl/server.crt --env.ENVIRONMENT=development --config webpack.config.dev.js"
+    "start": "webpack-dev-server --https --key  ./ssl/server.key --cert ./ssl/server.crt --env.ENVIRONMENT=development --config webpack.config.dev.js"
   },
   "repository": {
     "type": "git",
@@ -61,7 +61,9 @@
     "react-datepicker": "^2.0.0",
     "react-dom": "^16.8.2",
     "react-dropzone": "^7.0.1",
+    "react-facebook-login": "^4.1.1",
     "react-favicon": "0.0.14",
+    "react-google-login": "^5.0.2",
     "react-loaders": "^3.0.1",
     "react-router-dom": "^4.3.1",
     "react-textarea-autosize": "^7.1.0-1",

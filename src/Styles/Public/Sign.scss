@@ -89,12 +89,14 @@ div.signForm {
     div.buttonDiv {
         margin: 10px 0px;
         height: 36px;
+        margin-top: 70px;
         div.defaultSignIn {
             button {
                 width: 100%;
             }
         }
         div.socialSignIn {
+            align-items: center;
             display: flex;
             justify-content: flex-end;
             svg {
@@ -102,6 +104,14 @@ div.signForm {
                 path {
                     fill: #ccc;
                 }
+            }
+            button.socialSignIn{
+                width: 40px;
+                padding: 2px;
+                margin: 0px;
+            }
+            svg.svgLoadingBlockTime{
+                width: 25px;
             }
         }
     }

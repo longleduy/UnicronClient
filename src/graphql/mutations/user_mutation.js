@@ -25,6 +25,12 @@ mutation SignIn($formData: formData){
     signIn(formData:$formData){
 			jwt
 	}
+}`
+export const SIGN_IN_SOCIAL_MUTATION = gql`        
+mutation SignInSocial($signInfoSocialData: signInfoSocialData){
+	signInSocial(signInfoSocialData:$signInfoSocialData){
+			jwt
+	}
 }
 `
 export const SIGN_OUT_MUTATION = gql`        
