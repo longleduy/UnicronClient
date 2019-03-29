@@ -60,7 +60,7 @@ class PublicUserSignInForm extends PureComponent {
         if (response) {
             const signInfo = {
                 socialID: social == 'FACEBOOK'?response.id:response.googleId,
-                profileName: response.profileObj.name,
+                profileName: social == 'FACEBOOK'?response.name:response.profileObj.name,
                 avatar: social == 'FACEBOOK'?response.picture.data.url:response.profileObj.imageUrl,
                 socialRole: social
             }
